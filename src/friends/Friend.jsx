@@ -3,7 +3,9 @@ import FaceIcon from '@material-ui/icons/AccountBoxRounded';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import Blue from '@material-ui/core/colors/blue';
 
+const primary = Blue[400];
 
 const useStyles = makeStyles(theme => ({
   tweet: {
@@ -29,7 +31,7 @@ function Friend() {
     <Card className={classes.tweet}>
       <FaceIcon fontSize='large'/>
       <div>
-        <Button>Add Friend</Button>
+        <Button variant="contained" color='primary'>Add Friend</Button>
       </div>
     </Card>
   );

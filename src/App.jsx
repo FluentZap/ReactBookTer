@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Profilesummary from './profilesummary/Profilesummary';
 import Friends from './friends/Friends';
 
-
 const useStyles = makeStyles(theme => ({
   container: {
     // width: '33%',
