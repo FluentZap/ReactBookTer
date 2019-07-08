@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FaceIcon from '@material-ui/icons/Face';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import { makeStyles, styled } from '@material-ui/core/styles';
+import { withStyles, styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import PropTypes from "prop-types";
 import Fab from '@material-ui/core/Fab';
 
-const useStyles = makeStyles(theme => ({
+const MyFab = styled(Fab)({
+  marginLeft: 'auto',
+  marginRight: '5px',
+});
+
+
+let styles = theme => ({
   tweet: {
     margin: '10px',
     padding: '5px',
@@ -26,28 +32,52 @@ const useStyles = makeStyles(theme => ({
     },
     thumbUp: {}
   }
-}));
-
-const MyFab = styled(Fab)({
-marginLeft: 'auto',
-marginRight: '5px',
 });
 
-function Tweet(props) {
-  const classes = useStyles();
-  return (
-    <Card className={classes.tweet}>
-      <FaceIcon fontSize='large' />
-      <div className={classes.textBox}>
-        <h4>{props.heading}</h4>
-        <p>{props.text}</p>
-      </div>
-      <MyFab size = 'small'>
 
-      <ThumbUpIcon fontSize='small' />
-      </MyFab>
-    </Card>
-  );
+class Tweet extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweetLiked: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log('Workes Tweet Liked!');
+    //styles['tweet']['backgroundColor'] = 'red'
+    this.setState({ tweetLiked: !this.state.tweetLiked });
+  }
+
+  render() {
+    const { classes } = this.props;
+    let MyButton = null;
+    if (this.state.tweetLiked) {
+      MyButton =
+        <MyFab color="secondary" onClick={this.handleClick}>
+          <ThumbUpIcon fontSize='small' />
+        </MyFab>;
+    } else {
+      MyButton =
+        <MyFab onClick={this.handleClick}>
+          <ThumbUpIcon fontSize='small' />
+        </MyFab>;
+    }
+    console.log(MyButton);
+
+    return (
+      <Card className={classes.tweet} >
+        <FaceIcon fontSize='large' />
+        <div className={classes.textBox}>
+          <h4>{this.props.heading}</h4>
+          <p>{this.props.text}</p>
+        </div>
+        {MyButton}
+      </Card>
+    );
+  }
 }
 
 Tweet.propTypes = {
@@ -55,4 +85,4 @@ Tweet.propTypes = {
   text: PropTypes.string
 };
 
-export default Tweet;
+export default withStyles(styles)(Tweet);
