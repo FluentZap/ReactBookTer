@@ -4,7 +4,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import PropTypes from "prop-types";
-
+import Fab from '@material-ui/core/Fab';
 
 const useStyles = makeStyles(theme => ({
   tweet: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MyThumbUpIcon = styled(ThumbUpIcon)({
+const MyFab = styled(Fab)({
 marginLeft: 'auto',
 marginRight: '5px',
 });
@@ -42,7 +42,10 @@ function Tweet(props) {
         <h4>{props.heading}</h4>
         <p>{props.text}</p>
       </div>
-      <MyThumbUpIcon fontSize='small' />
+      <MyFab size = 'small'>
+
+      <ThumbUpIcon fontSize='small' />
+      </MyFab>
     </Card>
   );
 }
