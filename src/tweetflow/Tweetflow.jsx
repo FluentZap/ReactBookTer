@@ -2,6 +2,7 @@ import React from "react";
 import Tweet from "./Tweet";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import TweetBasic from "./TweetBasic";
 
 const useStyles = makeStyles(theme => ({
   tweetflow: {
@@ -43,7 +44,7 @@ function Tweetflow() {
 
       <TextField className={classes.textinput} type="text" placeholder="What's Happening?" />
       {tweets.map((tweet, index) =>
-        <Tweet
+        <TweetBasic
           heading={tweet.heading}
           text={tweet.text}
           key={index} />

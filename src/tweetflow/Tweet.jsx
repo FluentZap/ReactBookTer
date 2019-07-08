@@ -47,7 +47,6 @@ class Tweet extends Component {
 
   handleClick() {
     console.log('Workes Tweet Liked!');
-    //styles['tweet']['backgroundColor'] = 'red'
     this.setState({ tweetLiked: !this.state.tweetLiked });
   }
 
