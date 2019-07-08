@@ -3,7 +3,7 @@ import Tweet from "./Tweet";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TweetBasic from "./TweetBasic";
-
+import Button from '@material-ui/core/Button'
 const useStyles = makeStyles(theme => ({
   tweetflow: {
     width: '300px',
@@ -39,12 +39,23 @@ let tweets = [
 
 function Tweetflow() {
   const classes = useStyles();
+  let _post = null;
+
+  function postTweet(event) {
+    event.preventDefault();
+    console.log(_post.value);
+    _post.value='';
+  }
+
   return (
     <div className={classes.tweetflow}>
-
-      <TextField className={classes.textinput} type="text" placeholder="What's Happening?" />
+      <form onSubmit={postTweet}>
+      {/* <TextField id='tweet' className={classes.textinput} type="text" placeholder="What's Happening?" ref={(input) => {_post = input;}} /> */}
+      <input id='tweet' type="text" placeholder="What's Happening?" ref={(input) => {_post = input;}} />
+      <Button type='submit'>Post</Button>
+      </form>
       {tweets.map((tweet, index) =>
-        <TweetBasic
+        <Tweet
           heading={tweet.heading}
           text={tweet.text}
           key={index} />

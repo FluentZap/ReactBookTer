@@ -6,6 +6,7 @@ import Profile from './profile/Profile';
 import { makeStyles } from '@material-ui/core/styles';
 import Profilesummary from './profilesummary/Profilesummary';
 import Friends from './friends/Friends';
+import VoteHeader from './voteHeader/VoteHeader';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -52,6 +53,7 @@ function App() {
         </div>
         <Tweetflow />
         <Friends />
+        {/* <VoteHeader/> */}
       </div>
     </div>
   );
